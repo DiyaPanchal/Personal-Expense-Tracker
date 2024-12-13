@@ -21,7 +21,18 @@ public class PersonalExpenseTracker {
             System.out.println("No previous expense records found.");
         }
     }
-    
+
+    private static void saveExpenses() {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(FILENAME))) {
+            for (Expense expense : expenses) {
+                pw.println(expense.toCsv());
+            }
+            System.out.println("Expenses saved.");
+        } catch (IOException e) {
+            System.out.println("Error saving expenses.");
+        }
+    }
+
     private static void addExpense() {
         Scanner sc = new Scanner(System.in);
         
