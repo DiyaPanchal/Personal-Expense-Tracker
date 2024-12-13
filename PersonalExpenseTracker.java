@@ -26,6 +26,17 @@ public class PersonalExpenseTracker {
         expenses.add(new Expense(date, category, amount, description));
         System.out.println("Expense added.");
     }
+    
+    private static void viewExpenses() {
+        if (expenses.isEmpty()) {
+            System.out.println("No expenses recorded.");
+        } else {
+            System.out.println("\nRecorded Expenses:");
+            for (int i = 0; i < expenses.size(); i++) {
+                System.out.println((i + 1) + ". " + expenses.get(i));
+            }
+        }
+    }
 }
 
 class Expense {
