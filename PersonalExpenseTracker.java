@@ -2,10 +2,29 @@ import java.io.*;
 import java.util.*;
 
 public class PersonalExpenseTracker {
+    private static final String FILENAME = "expenses.csv";
     private static List<Expense> expenses = new ArrayList<>();
-
     public static void main(String[] args) {
         
+    }
+    private static void addExpense() {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter date (YYYY-MM-DD): ");
+        String date = sc.nextLine();
+
+        System.out.print("Enter category: ");
+        String category = sc.nextLine();
+
+        System.out.print("Enter amount: ");
+        double amount = sc.nextDouble();
+        sc.nextLine();
+
+        System.out.print("Enter description: ");
+        String description = sc.nextLine();
+
+        expenses.add(new Expense(date, category, amount, description));
+        System.out.println("Expense added.");
     }
 }
 
