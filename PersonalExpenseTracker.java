@@ -56,7 +56,36 @@ public class PersonalExpenseTracker {
             System.out.println("You have " + (budget - totalExpenses) + " remaining.");
         }
     }
+
+     private static void displayMenu() {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\nExpense Tracker Menu:");
+            System.out.println("1. Add Expense");
+            System.out.println("2. View Expenses");
+            System.out.println("3. Track Budget");
+            System.out.println("4. Save and Exit");
+            System.out.print("Choose an option: ");
+
+            int choice = sc.nextInt();
+            sc.nextLine(); // Consume the newline character
+
+            switch (choice) {
+                case 1 -> addExpense();
+                case 2 -> viewExpenses();
+                case 3 -> trackBudget();
+                case 4 -> {
+                    saveExpenses();
+                    System.out.println("Goodbye!");
+                    return;
+                }
+                default -> System.out.println("Invalid choice. Try again.");
+            }
+        }
+    }
 }
+
 
 class Expense {
     private String date;
