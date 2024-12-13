@@ -26,7 +26,7 @@ public class PersonalExpenseTracker {
         expenses.add(new Expense(date, category, amount, description));
         System.out.println("Expense added.");
     }
-    
+
     private static void viewExpenses() {
         if (expenses.isEmpty()) {
             System.out.println("No expenses recorded.");
@@ -35,6 +35,25 @@ public class PersonalExpenseTracker {
             for (int i = 0; i < expenses.size(); i++) {
                 System.out.println((i + 1) + ". " + expenses.get(i));
             }
+        }
+    }
+
+    private static void trackBudget() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter your budget: ");
+        double budget = sc.nextDouble();
+
+        double totalExpenses = 0;
+        for (Expense expense : expenses) {
+            totalExpenses += expense.getAmount();
+        }
+
+        System.out.println("Total expenses: " + totalExpenses);
+        if (totalExpenses > budget) {
+            System.out.println("You have exceeded your budget.");
+        } else {
+            System.out.println("You have " + (budget - totalExpenses) + " remaining.");
         }
     }
 }
