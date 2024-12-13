@@ -5,10 +5,11 @@ public class PersonalExpenseTracker {
     private static final String FILENAME = "expenses.csv";
     private static List<Expense> expenses = new ArrayList<>();
     public static void main(String[] args) {
-        
+        loadExpenses();
+        displayMenu();        
     }
 
-     private static void loadExpenses() {
+    private static void loadExpenses() {
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -111,7 +112,6 @@ public class PersonalExpenseTracker {
         }
     }
 }
-
 
 class Expense {
     private String date;
