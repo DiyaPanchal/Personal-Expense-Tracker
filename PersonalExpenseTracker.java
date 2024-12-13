@@ -7,6 +7,21 @@ public class PersonalExpenseTracker {
     public static void main(String[] args) {
         
     }
+
+     private static void loadExpenses() {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] fields = line.split(",");
+                if (fields.length == 4) {
+                    expenses.add(new Expense(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]));
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("No previous expense records found.");
+        }
+    }
+    
     private static void addExpense() {
         Scanner sc = new Scanner(System.in);
         
@@ -69,7 +84,7 @@ public class PersonalExpenseTracker {
             System.out.print("Choose an option: ");
 
             int choice = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (choice) {
                 case 1 -> addExpense();
